@@ -139,17 +139,10 @@ footer{
 
 .alinear:hover{
     box-shadow: rgb(225, 0, 255) 0px 0px 25px;
-    animation: fade .2s linear
+    transition: box-shadow 0.5s;
 }
 
-@keyframes fade{
-    0%{
-        box-shadow: transparent 0px 0px 25px;
-    }
-    100%{
-        box-shadow: rgb(225, 0, 255) 0px 0px 25px;
-    }
-}
+
 
 @font-face {
     font-family: 'anime_ineptregular';
@@ -170,7 +163,7 @@ h5{ font-family: 'anime_ineptregular'}
 .detalle {
     position: relative;
     margin-top: 5%;
-    margin-left: 15%;
+    margin-left: 25%;
     margin-bottom: 5%;
     width: auto;
 }
@@ -178,7 +171,7 @@ h5{ font-family: 'anime_ineptregular'}
 .detalletitulo {
     position: absolute;
     top: 18%;
-    left: 35vw;
+    left: 45vw;
     color: white; 
     margin-left: 2%; 
     font-family:'anime_ineptregular';
@@ -188,9 +181,10 @@ h5{ font-family: 'anime_ineptregular'}
 .detallesub {
     position: absolute;
     color: white;
-    left: 37%;
+    left: 47vw;
+    margin-right: 20%;
     top: 35%;
-    margin-right: 29%;
+    
     text-align: justify;
     
 }
@@ -198,7 +192,7 @@ h5{ font-family: 'anime_ineptregular'}
 .detallecosas {
     position: absolute;
     color: white;
-    left: 37%;
+    left: 47vw;
     top: 24%;
     margin-right: 35%;
     text-align: justify;
@@ -207,7 +201,7 @@ h5{ font-family: 'anime_ineptregular'}
 .precio {
     letter-spacing: 3px;
     position: absolute;
-    left: 37%;
+    left: 47vw;
     top: 55%;
     color: white;
     font-size: xx-large;
@@ -218,7 +212,7 @@ h5{ font-family: 'anime_ineptregular'}
 .boton {
     position: absolute;
     top: 66.3%;
-    left: 37%;
+    left: 47vw;
 }
 .flex-container {
     display: flex;
