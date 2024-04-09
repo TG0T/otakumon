@@ -146,19 +146,23 @@ footer{
 
 @font-face {
     font-family: 'anime_ineptregular';
-    src: url('/Anime_Inept.otf') format('woff2'),
-         url('/Anime_Inept.otf') format('woff');
+    src: url('../Anime_Inept.otf') format('woff2'),
+         url('../Anime_Inept.otf') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'manga';
-    src:url('/mangatb.ttf');
+    src:url('../mangatb.ttf');
 }
 
 
-h5{ font-family: 'anime_ineptregular'}
+h5{font-family: 'anime_ineptregular'}
+
+.txt {
+    font-family: 'anime_ineptregular'
+}
 
 .detalle {
     position: relative;
