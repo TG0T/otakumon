@@ -79,7 +79,7 @@
     <!--fin navbar-->
     <!--formulario registro-->
     <h1 class="centro">Crea tu cuenta!</h1>
-    <h6 class="sub">
+    <h6 class="sub" style="text-align: justify;">
         ¡Descubre los beneficios exclusivos de crear una cuenta en nuestra página! 
         Con una cuenta, tendrás acceso privilegiado a descuentos especiales en tus productos 
         favoritos. Además, podrás guardar tus datos de forma segura para agilizar tus 
@@ -87,48 +87,35 @@
         mano. ¡No esperes más y únete a nuestra comunidad hoy mismo para disfrutar de estas 
         ventajas y muchas más!</h6>
 
-        <div class="ajustar">
-          <table class="default">
-            <tr>
-                <td style="width: 5%;">        
-                    <div class="form-floating mb-3" style="margin-right: 1%;">
-                    <input type="email" class="form-control" id="nombre" placeholder="Nombre">
-                    <label for="floatingInput">Nombre</label>
-                </div>
-                </td>
-                <td style="width: 5%;">        
-                    <div class="form-floating mb-3" style="margin-left: 1%;">
-                    <input type="email" class="form-control" id="apellido" placeholder="Apellido">
-                    <label for="floatingInput">Apellido</label>
-                </div>
-                </td>
-            </tr>
-            </table> 
-          <div class="form-floating mb-2">
-            <input type="email" class="form-control" id="mail" placeholder="correo@domino.com">
-            <label for="floatingInput">Correo Electronico</label>
-        </div>
-        <table>
-            <tr>
-                <td style="width: 70%;">
-                    <div class="form-floating mt-2">
-                        <input type="password" class="form-control" id="pass" placeholder="Contraseña">
-                        <label for="floatingPassword">Contraseña</label>
-                    </div>
-                </td>
-                <td>
-                </div>
-                <div class="col-auto" style="color: white;">
-                    Debe tener entre 8 a 20 caracteres.
-                </div>
-                </td>
-            </tr>
-        </table>
-        
-        <div style="text-align: center;" class="mt-3">
-        <button type="button" class="btn btn-success" id="btn-registrar">Registrarse</button> <a href="index.html"><button type="button" class="btn btn-danger">Cancelar</button></a>
-        </div>
+    <div class="contenedor">
+      <div class="form-floating mb-3 name">
+        <input type="text" class="form-control" placeholder="" id="nombre">
+        <label class="floatingInput"> Nombre</label>
+      </div>
+      <div class="form-floating mb-3 flex">
+        <input type="text" class="form-control" placeholder="" id="apellido">
+        <label class="floatingInput"> Apellido</label>
+      </div>
     </div>
+    <div class="contenedor">
+      <div class="form-floating correo mb-3">
+        <input type="email" class="form-control" placeholder="" id="mail">
+        <label class="floatingInput"> Correo Electronico</label>
+      </div>
+    </div>
+    <div class="contenedor">
+      <div class="form-floating mb-3 name">
+        <input type="password" class="form-control" placeholder="" id="pass">
+        <label class="floatingInput"> Contraseña</label>
+      </div>
+      <div class=" mb-3 flex" style="color: white; padding-top: 2%;">
+        Debe tener entre 8 a 20 caracteres.
+      </div>
+    </div>
+    <div style="text-align: center;" class="mt-1">
+      <button type="button" class="btn btn-success" id="btn-registrar">Registrarse</button> 
+      <a href="index.html"><button type="button" class="btn btn-danger">Cancelar</button></a>
+      </div>
     <script
     src="https://code.jquery.com/jquery-3.7.1.js"
     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -136,12 +123,24 @@
     <script src="js/registro.js"></script>
 </body>
 <footer>
-    <hr>
-    <p>© OtakuMon<span style="margin: 2%;"> Creado Por Victor Mendoza y Diego Borquez</span>
-      <span><a href="index.html"><img src="logo/OMlogo.png" class="pies" alt=""></a></span>
-      <span style="margin-left: 42%;"><a href="http://www.twitter.com"><img style="width: 1.4%;"src="iconos/twitterx.svg" alt=""></a>
-            <a href="http://www.instagram.com"><img style="width: 1.4%;"src="iconos/instagram.svg" alt=""></a>
-      </span>
-    </p>
+  <hr>
+  <div class="footer">
+    <div class="punto">
+      © OtakuMon
+    </div>
+    <div>
+      Creado Por Victor Mendoza y Diego Borquez
+    </div>
+    <div class="logof">
+      <a href="index.html"><img src="logo/OMlogo.png"  style="width: 70%;"></a>
+    </div>
+    <div class="last">
+      <a href="http://www.twitter.com"><img src="iconos/twitterx.svg" style="width: 70%;" alt=""></a>
+    </div>
+    <div>
+      <a href="http://www.instagram.com"><img src="iconos/instagram.svg" alt="" style="width: 70%;"></a>
+    </div>
+  </div>
 </footer>
+
 </html>
