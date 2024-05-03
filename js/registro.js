@@ -32,12 +32,11 @@ $(document).ready(function() { //funcion anonima
         let mail = $('#l-mail').val() //consigue valores del login
         let pass = $('#l-pass').val() //consigue valores del login  
 
-        let url = "https://programadormaldito.cl/route/usuario_login" //direccion de la api
+        let url = "https://programadormaldito.cl/route/usuario_duoc_login" //direccion de la api
         let datos = {
             mail: mail, //consuige datos de mail y pass desde la api ()
             pass: pass
         }
-
         let correo = {}
 
         $.ajax({
@@ -48,12 +47,39 @@ $(document).ready(function() { //funcion anonima
 
             success: function(response){ //accion si la operacion funciona
                 console.log(response)
+                if(mail == '' || pass == ''){
+                    Swal.fire({
+                        title: "Todos los campos son obligatorios",
+                        icon: "warning"
+                    }
+                    );
+                }else if(response[0].RESPUESTA == 'LOGIN NOK'){
+                    Swal.fire({
+                        title: "Usuario o contraseña invalido",
+                        icon: "warning"
+                    }
+                    );
+                }else{
+                    Swal.fire({
+                        title: "Credenciales validas",
+                        text: "Seras redirijido en unos segundos",
+                        icon: "success"
+                    }
+                    );
+                    
                 correo.mail = mail
 
                 localStorage.setItem("x", mail);
+
+                setTimeout(() => {
+                    window.location.href = "ingreso_producto.html"
+                }, 3000);
+
+                
+            }
             },
             error: function(status, error){ //accion si la operacion falla
-
+                alert('a')
             }
         })
     })
