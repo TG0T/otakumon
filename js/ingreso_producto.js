@@ -4,7 +4,7 @@ $(document).ready(function() { //funcion anonima
         let nombre = $('#nombre-producto').val()
         let descripcion = $('#descripcion-producto').val()
         let precio = $('#precio-producto').val()
-        let mail = $('#correo-ing').val(localStorage.setItem("x", mail))
+        let mail = $('#correo-ing').val(localStorage.getItemetItem("x"))
 
         let url = "https://programadormaldito.cl/route/usuario_duoc_almacenar"
         let datos = {
