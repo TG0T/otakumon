@@ -57,4 +57,12 @@ $(document).ready(function() { //funcion anonima
             }
         })
     })
+
+    $('#btn-listado-correo').click(function(){
+        window.location.href = "listado_productos.html"
+    })
+
+    $('#btn-listado-completo').click(function(){
+        window.location.href = "listado_productos_total.html"
+    })
 })

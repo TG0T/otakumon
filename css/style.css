@@ -273,3 +273,21 @@ h5{font-family: 'anime_ineptregular'}
 .last {
     margin-right: 1%;
 }
+
+.test1{
+    display: flexbox;
+    text-align: center;
+    margin-top: 50%;
+}
+
+.test2{
+    display: flexbox;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.img {
+    max-width: 200px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
