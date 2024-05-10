@@ -34,13 +34,13 @@ $(document).ready(function() { //funcion anonima
             success: function(response){ //accion si la operacion funciona
                 console.log(response)
 
-                if(response[0].RESPUESTA == "NOK"){
+                if(response[0].RESPUESTA == 'NOK'){
+                    Swal.fire({
+                        title: "CODIGO YA EN USO",
+                        icon: "error"
+                    }
+                    );
             } else {
-                Swal.fire({
-                    title: "Codigo ya en uso",
-                    icon: "error"
-                }
-                );
                 Swal.fire({
                     title: "Producto Guardado con exito",
                     icon: "success"
