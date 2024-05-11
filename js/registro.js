@@ -70,17 +70,44 @@ $(document).ready(function() { //funcion anonima
                 correo.mail = mail
 
                 localStorage.setItem("x", mail);
+                localStorage.setItem("x1", 'SI');
 
                 setTimeout(() => {
-                    window.location.href = "ingreso_producto.html"
+                    window.location.href = "index.html"
                 }, 3000);
 
                 
             }
             },
             error: function(status, error){ //accion si la operacion falla
-                alert('a')
+                alert('No fue posible contactar con el serivor')
             }
         })
+    })
+
+    $('#btn_logoff').click(function(){
+        localStorage.setItem('x1','NO')
+        localStorage.setItem('x','')
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Has cerrado sesion de forma exitosa!"
+          });
+
+        setTimeout(() => {
+            window.location.href = "index.html"
+        }, 3000);
+
     })
 })

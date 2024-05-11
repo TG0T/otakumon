@@ -1,4 +1,15 @@
 $(document).ready(function() {
+
+    let login = localStorage.getItem('x1')
+
+    if(login == 'NO'){
+        $('#logged').hide()
+        $('#not_logged').show()
+    }else{
+
+        $('#logged').show()
+        $('#not_logged').hide()
+
     let link = "https://programadormaldito.cl/route/producto_duoc_obtener_x_mail?mail=" + localStorage.getItem('x') //link de la api + localstorage que contiene el correo logeado
 
     $.ajax({
@@ -29,6 +40,7 @@ $(document).ready(function() {
             console.error('Error al obtener el JSON:', error);
         }
     });
+}
 
 
 })

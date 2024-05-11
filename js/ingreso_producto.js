@@ -1,9 +1,21 @@
 $(document).ready(function(){
+
     let valor = localStorage.getItem('x')
     if (valor) {
         $('#correo-ing').val(valor)
     }
+
+    let logged = localStorage.getItem('x1')
+
+    if(login == 'NO'){
+        $('#logged').hide()
+        $('#not_logged').show()
+    }else{
+
+        $('#logged').show()
+        $('#not_logged').hide()}
 })
+
 
 $(document).ready(function() { //funcion anonima
     $('#btn-ingreso').click(function(){ //$('#ID <= id del div/objeto').click <= es lo mismo que el onclick de html =>(function(){}) <= se le asigna la funcion
@@ -34,24 +46,32 @@ $(document).ready(function() { //funcion anonima
             success: function(response){ //accion si la operacion funciona
                 console.log(response)
 
-                if(response[0].RESPUESTA == 'NOK'){
-                    Swal.fire({
-                        title: "CODIGO YA EN USO",
-                        icon: "error"
-                    }
-                    );
-            } else {
+            if(response[0].RESPUESTA == 'NOK'){
                 Swal.fire({
-                    title: "Producto Guardado con exito",
-                    icon: "success"
+                    title: "CODIGO YA EN USO",
+                    icon: "error"
                 }
                 );
+            }else if(codigo == '' || nombre == '' || descripcion == '' || precio == '' || mail == ''){
+                Swal.fire({
+                    title: "Todos los campos son obligatorios",
+                    icon: "warning"
+                }
+                );
+            } 
+            
+            else {
+            Swal.fire({
+                title: "Producto Guardado con exito",
+                icon: "success"
+            }
+            );
 
-                $('#codigo-producto').val('')
-                $('#nombre-producto').val('')
-                $('#descripcion-producto').val('')
-                $('#precio-producto').val('')}
-            },
+            $('#codigo-producto').val('')
+            $('#nombre-producto').val('')
+            $('#descripcion-producto').val('')
+            $('#precio-producto').val('')}
+        },
             error: function(status, error){ //accion si la operacion falla
                 console.log(error + " " + status)
             }

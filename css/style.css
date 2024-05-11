@@ -53,6 +53,9 @@ body {
     width: 40vw;
 }
 
+.buscar-l {
+}
+
 .anchar {
     width: 15vw;
 }
@@ -290,4 +293,13 @@ h5{font-family: 'anime_ineptregular'}
     max-height: 300px;
     width: auto;
     height: auto;
+}
+
+.colores{
+    color: white;
+    padding-top: 19%;
+}
+
+.orden{
+    margin-left: -15%;
 }
