@@ -45,7 +45,7 @@
     MDUDT6 = MY DRESS UP DARLING Tomo 6
     MDUDT7 = MY DRESS UP DARLING Tomo 7
     MDUDT8 = MY DRESS UP DARLING Tomo 8
-    
+
     KST1 = KOMI-SAN Tomo 1
     KST2 = KOMI-SAN Tomo 2
     KST3 = KOMI-SAN Tomo 3
@@ -55,21 +55,88 @@
     KST7 = KOMI-SAN Tomo 7
     KST8 = KOMI-SAN Tomo 8
 
-    
-
+    YADCT1 = GOKUSHUFUDO Tomo 1
+    YADCT2 = GOKUSHUFUDO Tomo 2
+    YADCT3 = GOKUSHUFUDO Tomo 3
+    YADCT4 = GOKUSHUFUDO Tomo 4
+    YADCT5 = GOKUSHUFUDO Tomo 5
+    YADCT6 = GOKUSHUFUDO Tomo 6
+    YADCT7 = GOKUSHUFUDO Tomo 7
+    YADCT8 = GOKUSHUFUDO Tomo 8
 
 
 -->
 
 <body>
-  <!--Navbar-->
-  <div id="login"></div>
-  <!--fin navbar-->
-  <div id="not_logged" class="contenedor mt-5 mb-5" style="color: white; text-align: center;">
-    <h1>Debes iniciar sesion para acceder a esta pagina.</h1>
-  </div>
-
-<div class="container mt-5 contenedor-1" id="logged">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fuentenav" data-bs-theme="dark" id="main">
+        <div class="container-fluid">
+          <a href="index.html"><img src="logo/OMlogo.png" class="navbar-brand logo"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categorias
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex buscar" role="search">
+              <input class="form-control me-2" type="search" placeholder="Encuentra tu manga favorito!" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </form>
+            <ul class="navbar-nav me-2">
+                  <li class="nav-item">
+                    <div>
+                      <a href="registro.html"><button type="submit" class="btn btn-info" id="registrate">Registrate</button></a>
+                    </div>
+                  </li>
+                </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <div class="dropdown">
+                  <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    Cliente
+                  </button>
+                  <div class="dropdown-menu p-3 anchar">
+                    <div class="mb-3">
+                      <label for="exampleDropdownFormEmail2" class="form-label">Correo</label>
+                      <input type="email" class="form-control" id="l-mail" placeholder="email@dominio.com">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleDropdownFormPassword2" class="form-label">Contraseña</label>
+                      <input type="password" class="form-control" id="l-pass" placeholder="Contraseña">
+                    </div>
+                    <div class="mb-3">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                        <label class="form-check-label" for="dropdownCheck2">
+                          Recuerdame
+                        </label>
+                      </div>
+                    </div>
+                    <div class="mb-3 ms-auto">
+                      <a href="">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <button type="submit" class="btn btn-success" id="btn_login">Iniciar sesion</button>
+                  </div>
+                </ul>
+              </ul>
+                </div>
+             </ul>
+          </div>
+        </div>
+    </nav>
+    <!--fin navbar-->
+<div class="container mt-5 contenedor-1">
     <h1 style="color: white" class="mt-5 mb-3" >Ingreso productos</h1>
     <div>
     <label style="color: white" class="mb-1">Codigo</label>
@@ -94,13 +161,10 @@
     <div class="mt-5 mb-5">
         <button class="btn btn-success" id="btn-ingreso">Ingreso Producto</button>
         <button class="btn btn-danger" id="btn-ingreso">Cancelar</button>
-        <button class="btn btn-warning" id="btn-listado-correo">Listado productos Correo</button>
-        <button class="btn btn-primary" id="btn-listado-completo">Listado completo API</button>
     </div>
 </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="js/navbar.js"></script>
     <script src="js/registro.js"></script>
     <script src="js/ingreso_producto.js"></script>
 
