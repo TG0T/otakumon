@@ -21,17 +21,6 @@ $(document).ready(function() { //funcion anonima
 
             success: function(response){ //accion si la operacion funciona
                 console.log(response)
-
-                
-                if(response[0].RESPUESTA == 'NOK'){
-                    Swal.fire({
-                    title: "Correo en uso",
-                    icon: "warning"})
-                }else{
-                    Swal.fire({
-                    title: "Registro Exitoso",
-                    icon: "success"})
-                }
             },
             error: function(status, error){ //accion si la operacion falla
                 console.log(error + " " + status)
