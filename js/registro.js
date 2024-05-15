@@ -73,7 +73,7 @@ $(document).ready(function() { //funcion anonima
                 localStorage.setItem("x1", 'SI');
 
                 setTimeout(() => {
-                    window.location.href = "index.html"
+                    window.location.href = "../index.html"
                 }, 3000);
 
                 
@@ -106,7 +106,7 @@ $(document).ready(function() { //funcion anonima
           });
 
         setTimeout(() => {
-            window.location.href = "index.html"
+            window.location.href = "../index.html"
         }, 3000);
 
     })
