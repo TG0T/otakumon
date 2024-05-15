@@ -73,8 +73,8 @@ $(document).ready(function() { //funcion anonima
                 localStorage.setItem("x1", 'SI');
 
                 setTimeout(() => {
-                    window.location.href = "../index.html"
-                }, 3000);
+                    window.location.reload();
+                }, 2000);
 
                 
             }
@@ -93,7 +93,7 @@ $(document).ready(function() { //funcion anonima
             toast: true,
             position: "top-end",
             showConfirmButton: false,
-            timer: 3000,
+            timer: 2000,
             timerProgressBar: true,
             didOpen: (toast) => {
               toast.onmouseenter = Swal.stopTimer;
@@ -106,8 +106,8 @@ $(document).ready(function() { //funcion anonima
           });
 
         setTimeout(() => {
-            window.location.href = "../index.html"
-        }, 3000);
+            window.location.reload();
+        }, 2000);
 
     })
 })
