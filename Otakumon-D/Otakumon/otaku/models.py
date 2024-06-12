@@ -25,6 +25,7 @@ class Manga(models.Model):
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
     descripcion = models.TextField()
     precio = models.IntegerField()
+    stock = models.IntegerField()
     
     def __str__(self):
         return self.nombre
