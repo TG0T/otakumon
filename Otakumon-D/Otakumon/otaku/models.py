@@ -17,11 +17,13 @@ class Autor(models.Model):
         return self.nombre
     
 class Manga(models.Model):
-    id = models.CharField(max_length=3, primary_key=True)
+    id = models.CharField(max_length=4, primary_key=True)
+    portada = models.ImageField(upload_to='images/')
     nombre = models.CharField(max_length = 200)
     volumen = models.IntegerField()
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     editorial = models.ForeignKey(Editorial, on_delete=models.CASCADE)
+    descripcion = models.TextField()
     precio = models.IntegerField()
     
     def __str__(self):
