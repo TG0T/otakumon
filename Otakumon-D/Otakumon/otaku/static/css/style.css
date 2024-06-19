@@ -1,0 +1,305 @@
+.centrado {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
+}
+.formu {
+    margin-top: auto;
+}
+
+.boton {
+    height: 75px;
+}
+
+.imagen {
+    width: 60%;
+}
+
+.alinear {
+    text-align: CENTER;
+}
+
+.top {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+body {
+    background-color: #111111f8;
+    font-family: mundial, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.logo {
+    width: 40%;
+}
+
+.fuentenav {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.separador {
+    padding-left: 2%;
+}
+
+.cuadro {
+    width: 210px;
+    height: 320px;
+}
+
+.buscar {
+    padding-right: 10vw;
+    width: 40vw;
+}
+
+.buscar-l {
+}
+
+.anchar {
+    width: 15vw;
+}
+
+
+.registrate {
+    padding-right: 100px;
+}
+
+.barra { 
+    border: 1px solid #000000;
+    border-radius: 7px;
+    width: 20%;
+    padding-left: .5%
+}
+
+.centro{
+    padding-top: 2%;
+    text-align: center;
+    color: white;
+    text-shadow: #000003 1px 1px;
+}
+
+.sub{
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.699);
+    text-shadow: #000000 1px 1px;
+    padding-bottom: 2%;
+}
+
+.ajustar {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.text-body-secondary{
+    color: aliceblue;
+}
+
+footer{
+    color: #b1b1b1;
+}
+
+.pies {
+    width: 7%;
+    margin-left: 20%;
+}
+
+.test{
+    width: 25%;
+}
+
+.manga {
+    width: 150px;
+    height: 215px;
+}
+
+.text-box{
+    color: #fff;
+    margin-left: 33.5%;
+    text-shadow: #000000 6px 5px 15px;
+}
+
+.text-box h1{
+    font-size: 75px;
+    line-height: 70px;
+    color: transparent;
+    -webkit-text-stroke: 1px rgb(175, 175, 175);
+    background: url(fondo/bg3.webp);
+    -webkit-background-clip: text;
+    background-position: 0 0;
+    animation: back 20s linear infinite;
+}
+@keyframes back{
+    100%{
+    background-position: 2000px 0;}
+}
+
+.entrelinea {
+    margin-bottom: 25%;
+}
+
+.alinear:hover{
+    box-shadow: rgb(225, 0, 255) 0px 0px 25px;
+    transition: box-shadow 0.5s;
+}
+
+
+
+@font-face {
+    font-family: 'anime_ineptregular';
+    src: url('Anime_Inept.otf') format('woff2'),
+         url('Anime_Inept.otf') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'manga';
+    src:url('../mangatb.ttf');
+}
+
+
+h5{font-family: 'anime_ineptregular'}
+
+.txt {
+    font-family: 'anime_ineptregular'
+}
+
+.detalle {
+    position: relative;
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-bottom: 5%;
+    width: auto;
+}
+
+.detalletitulo {
+    position: absolute;
+    top: 18%;
+    left: 45vw;
+    color: white; 
+    margin-left: 2%; 
+    font-family:'anime_ineptregular';
+    font-size: xx-large;
+}
+
+.detallesub {
+    position: absolute;
+    color: white;
+    left: 47vw;
+    margin-right: 20%;
+    top: 35%;
+    
+    text-align: justify;
+    
+}
+
+.detallecosas {
+    position: absolute;
+    color: white;
+    left: 47vw;
+    top: 24%;
+    margin-right: 35%;
+    text-align: justify;
+}
+
+.precio {
+    letter-spacing: 3px;
+    position: absolute;
+    left: 47vw;
+    top: 55%;
+    color: white;
+    font-size: xx-large;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 0.226) 0%, transparent 99%);
+    padding: 3px; 
+}
+
+.boton {
+    position: absolute;
+    top: 66.3%;
+    left: 47vw;
+}
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.fav {
+    margin-left: 7%;
+}
+
+.contenedor {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+.contenedor-1{
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+.name {
+    width: 49%;
+    margin-right: 1%;
+}
+
+.flex {
+    flex-grow: 1;
+}
+
+.correo{
+    width: 100%;
+}
+
+.footer{
+    margin-top: 2%;
+    display: flex;
+    color: grey;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.punto{
+    margin-right: 1%;
+}
+
+.logof {
+    margin-left: 18.8%;
+    margin-right: 35.9%;
+}
+
+.last {
+    margin-right: 1%;
+}
+
+.test1{
+    display: flexbox;
+    text-align: center;
+    margin-top: 50%;
+}
+
+.test2{
+    display: flexbox;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.img {
+    max-width: 200px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+}
+
+.colores{
+    color: white;
+    padding-top: 19%;
+}
+
+.orden{
+    margin-left: -15%;
+}
