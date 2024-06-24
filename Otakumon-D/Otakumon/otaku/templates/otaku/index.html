@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary fuentenav" data-bs-theme="dark" id="main">
       <div class="container-fluid">
           <!-- Logo con enlace -->
-          <a href="../../index.html">
+          <a href="{% url 'index' %}">
               <img src="{% static 'imagenes/logo/OMlogo.png' %}" class="navbar-brand logo">
           </a>
           <!-- Botón para desplegar menú en dispositivos móviles -->
@@ -126,7 +126,7 @@
         <h1>LO MAS VENDIDO</h1>
     </div>
     <!--carousel multiple-->
-    <div id="carouselExampleAutoplaying" class="carousel slide test centrado" data-bs-ride="carousel">
+    <!-- <div id="carouselExampleAutoplaying" class="carousel slide test centrado" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="row">
@@ -176,213 +176,36 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> -->
     <!--tabla de productos-->
-    <!-- linea 1 -->
-    <hr style="color: #b1b1b1; width: 75%; margin-left: 12%;">
-    <div class="container-md text-center">
+
+    <div class="container mt-4">
       <div class="row">
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/hxh.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto txt">CAZADOR X</H5>
-              <p class="card-text">Autor: Yoshihiro Togashi</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Ivrea</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/comprahxh.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/sxf.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto">SPY X FAMILY</H5>
-              <p class="card-text">Autor: Tatsuya Endo</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Ivrea</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/comprasxf.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/jjk.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto">JUJUTSU KAISEN</H5>
-              <p class="card-text">Autor: Gege Akutami</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Norma</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/comprajjk.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/sbd.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto">MY DRESS UP</H5>
-              <p class="card-text">Autor: Shinishi Fukuda</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Panini</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/comprasbd.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
+          {% for manga in mangas %}
+              {% if forloop.counter0|divisibleby:4 and not forloop.first %}
+                  </div><div class="row">
+              {% endif %}
+              <div class="col-md-3 mb-4">
+                  <div class="card alinear">
+                      <img src="{{ manga.portada }}" class="card-img-top cuadro centrado mt-1">
+                      <div class="card-body">
+                          <h5 class="card-title">{{ manga.nombre  }}</h5>
+                          <p class="card-text">{{ manga.autor }}</p>
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Editorial: {{ manga.editorial }}</li>
+                              <li class="list-group-item mt-2">
+                                  <a href="{% url 'mangas' item_nombre=manga.nombre %}">
+                                      <button type="button" class="btn btn-outline-success">Ver Mas</button>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
       </div>
-      <!-- linea 2 -->
-      <div class="row" style="margin-top: 3%;">
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/kscc.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto">KOMI-SAN</H5>
-              <p class="card-text">Autor: Tomohito Oda</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Ivrea</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/comprakscc.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/yadc.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto">GOKUSHUFUDO</H5>
-              <p class="card-text">Autor: Kousuke Oono</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Panini</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/comprayadc.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/aot.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto">Attack of titans</H5>
-              <p class="card-text">Autor: Hajime Isayama</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Norma</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/compraaot.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card alinear">
-            <img src="mangas/csm.webp" class="card-img-top cuadro centrado" alt="...">
-            <div class="card-body">
-              <H5 class="card-text auto int open-sans-1">CHAINSAW MAN</H5>
-              <p class="card-text">Autor: Tatsuki Fujimoto</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item ">Editorial: Norma</li>
-              <li class="list-group-item ">Stock: Disponible</li>
-              <li class="list-group-item">
-                <a href="compra/compracsm.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- linea 3 -->
-        <div class="row" style="margin-top: 3%;">
-          <div class="col">
-            <div class="card alinear">
-              <img src="mangas/sld.webp" class="card-img-top cuadro centrado" alt="...">
-              <div class="card-body">
-                <H5 class="card-text auto">SLAM DUNK</H5>
-                <p class="card-text">Autor: Takehiko Inoue</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Editorial: Ivrea</li>
-                <li class="list-group-item ">Stock: Disponible</li>
-                <li class="list-group-item">
-                  <a href="compra/comprasld.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card alinear">
-              <img src="mangas/fma.jpeg" class="card-img-top cuadro centrado" alt="...">
-              <div class="card-body">
-                <H5 class="card-text auto">FULL METAL</H5>
-                <p class="card-text">Autor: Hiromu Arakawa</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Editorial: Norma</li>
-                <li class="list-group-item ">Stock: Disponible</li>
-                <li class="list-group-item">
-                  <a href="compra/comprafma.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card alinear">
-              <img src="mangas/tkr.jpeg" class="card-img-top cuadro centrado" alt="...">
-              <div class="card-body">
-                <H5 class="card-text auto">TOKYO REVENGERS </H5>
-                <p class="card-text">Autor: Ken Wakui</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Editorial: Norma</li>
-                <li class="list-group-item ">Stock: Disponible</li>
-                <li class="list-group-item">
-                  <a href="compra/compratkr.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card alinear">
-              <img src="mangas/kny.jpeg" class="card-img-top cuadro centrado" alt="...">
-              <div class="card-body">
-                <H5 class="card-text auto int open-sans-1">KIMETSU NO YAIBA</H5>
-                <p class="card-text">Autor: Koyoharu Gotouge</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Editorial: Norma</li>
-                <li class="list-group-item ">Stock: Disponible</li>
-                <li class="list-group-item">
-                  <a href="compra/comprakny.html"><button type="button" class="btn btn-outline-success">Ver</button></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-      </div>
-    </div>
   </div>
+
   <script
   src="https://code.jquery.com/jquery-3.7.1.js"
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -390,13 +213,12 @@
   <script src="{% static 'js/navbar.js' %}"></script>
   <script src="{% static 'js/registro.js' %}"></script>
 </body>
-<footer>
   <footer>
     <hr>
     <p>© OtakuMon<span style="margin: 2%;"> Creado Por Victor Mendoza y Diego Borquez</span>
-      <span><a href="index.html"><img src="logo/OMlogo.png" class="pies" alt=""></a></span>
-      <span style="margin-left: 42%;"><a href="http://www.twitter.com"><img style="width: 1.4%;"src="iconos/twitterx.svg" alt=""></a>
-            <a href="http://www.instagram.com"><img style="width: 1.4%;"src="iconos/instagram.svg" alt=""></a>
+      <span><a href="index.html"><img src="{% static 'imagenes/logo/OMlogo.png' %}" class="pies" alt=""></a></span>
+      <span style="margin-left: 42%;"><a href="http://www.twitter.com"><img style="width: 1.4%;"src="{% static 'imagenes/iconos/twitterx.svg' %}" alt=""></a>
+            <a href="http://www.instagram.com"><img style="width: 1.4%;"src="{% static 'imagenes/iconos/instagram.svg' %}" alt=""></a>
       </span>
     </p>
   </footer>

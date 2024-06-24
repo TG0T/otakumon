@@ -27,5 +27,14 @@ class Manga(models.Model):
     precio = models.IntegerField()
     stock = models.IntegerField()
     
+    
+    def __str__(self):
+        return self.id
+
+class MangaInicio(models.Model):
+    id = models.CharField(max_length=3, primary_key=True)
+    nombre = models.CharField(max_length = 200)
+    sub_id = models.ForeignKey(Manga, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.nombre

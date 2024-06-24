@@ -168,7 +168,7 @@ h5{font-family: 'anime_ineptregular'}
 }
 
 .detalle {
-    position: relative;
+    display: flexbox;
     margin-top: 5%;
     margin-left: 25%;
     margin-bottom: 5%;
@@ -176,17 +176,16 @@ h5{font-family: 'anime_ineptregular'}
 }
 
 .detalletitulo {
-    position: absolute;
-    top: 18%;
-    left: 45vw;
+    display: flexbox;
     color: white; 
-    margin-left: 2%; 
     font-family:'anime_ineptregular';
     font-size: xx-large;
 }
 
+
+
 .detallesub {
-    position: absolute;
+    display: flexbox;
     color: white;
     left: 47vw;
     margin-right: 20%;
@@ -197,7 +196,7 @@ h5{font-family: 'anime_ineptregular'}
 }
 
 .detallecosas {
-    position: absolute;
+    display: flexbox;
     color: white;
     left: 47vw;
     top: 24%;
@@ -207,7 +206,7 @@ h5{font-family: 'anime_ineptregular'}
 
 .precio {
     letter-spacing: 3px;
-    position: absolute;
+    display: flexbox;
     left: 47vw;
     top: 55%;
     color: white;
@@ -279,7 +278,6 @@ h5{font-family: 'anime_ineptregular'}
 
 .test1{
     display: flexbox;
-    text-align: center;
     margin-top: 50%;
 }
 
@@ -302,4 +300,24 @@ h5{font-family: 'anime_ineptregular'}
 
 .orden{
     margin-left: -15%;
+}
+
+.contenedor-2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-right: auto;
+}
+
+.textos{
+    font-family:'anime_ineptregular';
+    color: white;
+    margin-left: 1%;
+}
+
+.cont{
+    width: 600px;
+    height: auto;
 }
