@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Manga
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 def index(request):
@@ -19,3 +20,21 @@ def detalles(request, item_id):
     listamanga = Manga.objects.all()
     detalle = get_object_or_404(Manga, id=item_id)
     return render(request, "otaku/detalles.html", {'detalle': detalle, 'listamanga': listamanga})
+
+def login(request):
+    if request.method == 'GET':
+        context = ''
+        return render(request, 'mytest/login.html', {'context': context})
+
+    elif request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            # Redirect to a success page?
+            # return HttpResponseRedirect('/')
+        else:
+            context = {'error': 'Wrong credintials'}  # to display error?
+            return render(request, 'mytest/login.html', {'context': context})    
