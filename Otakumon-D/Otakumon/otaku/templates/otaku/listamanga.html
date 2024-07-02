@@ -2,10 +2,19 @@
 {% load static %}
 {% block content %}
 
+<form class="d-flex mx-auto mt-3" style="width: 45%;" role="search" method="GET">
+  {% csrf_token %}
+  <input class="form-control" type="search" placeholder="Buscar" aria-label="Search" name="buscar">
+  <div class="input-group-append">
+    <button class="btn btn-outline-success ms-2" type="submit">Buscar
+    <i class="fas fa-search fa-sm"> </i>
+  </button>
+  </div>
+</form>
 
 <div class="container mt-5 mb-5" style="width: 50%;">
     <a href="{% url 'ingresomanga' %}"><button type="submit" class="btn btn-success mb-2">Ingresar Mangas</button></a>
-<table class="table table-striped">
+<table class="table table-dark">
   <thead>
     <tr>
         <th scope="col">ID</th>
@@ -20,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for manga in mangas %}
+    {% for manga in entity %}
     <tr>
         <th scope="row">{{manga.id}}</th>
         <td>{{manga.nombre}}</td>
@@ -30,10 +39,43 @@
         <td>{{manga.editorial}}</td>
         <td>{{manga.stock}}</td>
         <td><a class="btn btn-warning" href="{% url 'edit' manga.id %}"> Editar </a></td>
-        <td><a class="btn btn-danger" href="{% url 'delete' manga.id %}"> Eliminar </a></td>
+        <td><a class="btn btn-danger" href="#"> Eliminar </a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 </div>
+<hr>
+<div>
+  {% include 'otaku/paginator.html '%}
+</div>
+
+{% block js %}
+  <script>
+    const eliminarButtons = document.querySelectorAll('.btn-danger');
+
+    eliminarButtons.forEach(button => {
+      button.addEventListener('click', event => {
+        const mangaId = event.target.parentNode.parentNode.cells[0].textContent;
+        Swal.fire({
+          'title': "¿Estas seguro?",
+          'text': "ESTAC ACCION NO SE PUEDE DESHACER",
+          'icon' : 'warning',
+          "showCancelButton" : true,
+          "cancelButtonText" : "No",
+          "confirmButtonText": "Si",
+          "confirmButtonColor": 'green',
+          "cancelButtonColor": 'red',
+          "reverseButtons": true
+        })
+        .then(function(result){
+          if(result.isConfirmed){
+            window.location.href = "/eliminar/" + encodeURIComponent(mangaId)
+          }
+        })
+      });
+    });
+  </script>
+{% endblock %}
+
 {% endblock %}

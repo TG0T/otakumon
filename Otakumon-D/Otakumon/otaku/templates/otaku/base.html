@@ -9,9 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     {% comment %} <link rel="stylesheet" href="css/style.css"> {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -27,24 +24,6 @@
               <span class="navbar-toggler-icon"></span>
           </button>
           <!-- Contenido del menú desplegable -->
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <!-- Elementos del menú -->
-              <ul class="navbar-nav mb-2 mb-lg-0">
-                  <!-- Elemento de menú desplegable -->
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
-                      <ul class="dropdown-menu">
-                          <!-- Opciones del menú desplegable -->
-                          <li><a class="dropdown-item" href="#">Shounen</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Mecha</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Mahou Shoujo</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Shojo</a></li>
-                      </ul>
-                  </li>
-              </ul>
               {% if perms.otaku.add_manga %}
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Elementos del menú -->
@@ -57,10 +36,6 @@
                             <li><a class="dropdown-item" href="{% url 'ingresomanga' %}">Ingreso Manga</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'listar_mangas' %}">Listado</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Mahou Shoujo</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Shojo</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -104,16 +79,24 @@
           </div>
       </div>
   </nav>
-  
     <!--fin navbar-->
+
 {% block content %}
 {%  endblock %}
-<script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
-  <script src="{% static 'js/navbar.js' %}"></script>
-  <script src="{% static 'js/registro.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        {% if messages %}
+            {% for m in messages %}
+                <script>
+                    Swal.fire({
+                        title: "Exito",
+                        text: '{{m}}',
+                        icon : 'success'
+                    })
+                </script>
+            {% endfor %}
+        {% endif %}
+
 </body>
   <footer>
     <hr>

@@ -4,6 +4,8 @@ from .models import Manga
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, permission_required
 from .forms import CustomUserCreationForm, IngresoManga
+from django.core.paginator import Paginator, InvalidPage
+from django.http import Http404
 # Create your views here.
 
 
@@ -23,6 +25,7 @@ def detalles(request, item_id):
     return render(request, "otaku/detalles.html", {'detalle': detalle, 'listamanga': listamanga})
 
 def logout_view(request):
+    messages.success(request, "Has cerrado sesión Correctamente!")
     logout(request)
     return redirect('index')
 
@@ -35,6 +38,7 @@ def register(request):
         user_creation_form = CustomUserCreationForm(request.POST)
         if user_creation_form.is_valid():
             user_creation_form.save()
+            messages.success(request, "Usuario Correctamente!")
 
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(request, user)
@@ -53,6 +57,7 @@ def ingresomanga(request):
         manga_form = IngresoManga(data=request.POST, files=request.FILES)
         if manga_form.is_valid():
             manga_form.save()
+            messages.success(request, "Ingresado Correctamente!")
             return redirect('listar_mangas')
         else:
             context["form"] = manga_form
@@ -61,7 +66,20 @@ def ingresomanga(request):
 
 def listar_mangas(request):
     mangas = Manga.objects.all()
-    return render(request, 'otaku/listamanga.html', {'mangas' : mangas})
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(mangas, 10)
+        mangas = paginator.page(page)
+    except InvalidPage:
+        raise Http404
+
+    data = {
+        'entity': mangas,
+        'paginator': paginator
+    }
+
+    return render(request, 'otaku/listamanga.html', data)
 
 def edit(request, id_manga):
     manga = Manga.objects.get(id=id_manga)
@@ -85,14 +103,16 @@ def actualiza(request, id_manga):
         formulario = IngresoManga(data=request.POST, instance=manga, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Modificado Correctamente!")
             return redirect(to='listar_mangas')
         data['form'] = formulario
 
-    return render(request, 'otaku/mangaedit.html', data)
+    return render(request, 'otaku/mangaedit.html', data, {'messages': messages.get_messages(request)})
 
 def delete (request, id_manga):
     manga = Manga.objects.get(pk = id_manga)
     manga.delete()
+    messages.success(request, "Eliminado Correctamente!")
     mangas = Manga.objects.all()
 
     return render(request, 'otaku/listamanga.html', {'mangas' : mangas})
