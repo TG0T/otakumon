@@ -1,0 +1,39 @@
+{% extends 'otaku/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="container mt-5 mb-5" style="width: 50%;">
+    <a href="{% url 'ingresomanga' %}"><button type="submit" class="btn btn-success mb-2">Ingresar Mangas</button></a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Volumen</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Editorial</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for manga in mangas %}
+    <tr>
+        <th scope="row">{{manga.id}}</th>
+        <td>{{manga.nombre}}</td>
+        <td>{{manga.volumen}}</td>
+        <td>{{manga.precio}}</td>
+        <td>{{manga.autor}}</td>
+        <td>{{manga.editorial}}</td>
+        <td>{{manga.stock}}</td>
+        <td><a class="btn btn-warning" href="{% url 'edit' manga.id %}"> Editar </a></td>
+        <td><a class="btn btn-danger" href="{% url 'delete' manga.id %}"> Eliminar </a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

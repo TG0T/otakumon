@@ -1,15 +1,16 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth import logout, authenticate, login
 from .models import Manga
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
+from .forms import CustomUserCreationForm, IngresoManga
 # Create your views here.
+
 
 def index(request):
     filtro = ['hxh1','sxf1','jjk1','sbd1','ksc1','yac1','aot1','csm1','sld1','tkr1','kny1','fma1'] #filtra ids
     mangas = Manga.objects.filter(id__in=filtro) #llamamos objeto y utilizamos el filtro
     return render(request, "otaku/index.html", {"mangas": mangas})
-
-def registro(request):
-    return render(request, "otaku/registro.html")
 
 def mangas(request, item_nombre):
     listamanga = Manga.objects.all()
@@ -21,20 +22,77 @@ def detalles(request, item_id):
     detalle = get_object_or_404(Manga, id=item_id)
     return render(request, "otaku/detalles.html", {'detalle': detalle, 'listamanga': listamanga})
 
-def login(request):
-    if request.method == 'GET':
-        context = ''
-        return render(request, 'mytest/login.html', {'context': context})
+def logout_view(request):
+    logout(request)
+    return redirect('index')
 
-    elif request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
+def register(request):
+    data = {
+        'form' : CustomUserCreationForm()
+    }
 
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+    if request.method == 'POST':
+        user_creation_form = CustomUserCreationForm(request.POST)
+        if user_creation_form.is_valid():
+            user_creation_form.save()
+
+            user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(request, user)
-            # Redirect to a success page?
-            # return HttpResponseRedirect('/')
+
+            return redirect('index')
+
+    return render(request, 'registration/register.html', data)
+
+
+def ingresomanga(request):
+    context = {
+        'form': IngresoManga()
+    }
+
+    if request.method == 'POST':
+        manga_form = IngresoManga(data=request.POST, files=request.FILES)
+        if manga_form.is_valid():
+            manga_form.save()
+            return redirect('listar_mangas')
         else:
-            context = {'error': 'Wrong credintials'}  # to display error?
-            return render(request, 'mytest/login.html', {'context': context})    
+            context["form"] = manga_form
+
+    return render(request, 'otaku/ingreso_manga.html', context)
+
+def listar_mangas(request):
+    mangas = Manga.objects.all()
+    return render(request, 'otaku/listamanga.html', {'mangas' : mangas})
+
+def edit(request, id_manga):
+    manga = Manga.objects.get(id=id_manga)
+    if request.method == 'POST':
+        form = IngresoManga(request.POST, request.FILES, instance=manga)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_mangas')
+    else:
+        form = IngresoManga(instance=manga)
+    return render(request, "otaku/mangaedit.html", {'form': form, 'manga': manga})
+
+def actualiza(request, id_manga):
+    manga = get_object_or_404(Manga, pk=id_manga)
+
+    data = {
+        'form' : IngresoManga(instance=manga),
+        'manga' : manga
+    }
+    if request.method == 'POST':
+        formulario = IngresoManga(data=request.POST, instance=manga, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to='listar_mangas')
+        data['form'] = formulario
+
+    return render(request, 'otaku/mangaedit.html', data)
+
+def delete (request, id_manga):
+    manga = Manga.objects.get(pk = id_manga)
+    manga.delete()
+    mangas = Manga.objects.all()
+
+    return render(request, 'otaku/listamanga.html', {'mangas' : mangas})

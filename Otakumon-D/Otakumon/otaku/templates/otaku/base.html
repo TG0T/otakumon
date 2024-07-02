@@ -29,7 +29,7 @@
           <!-- Contenido del menú desplegable -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <!-- Elementos del menú -->
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav mb-2 mb-lg-0">
                   <!-- Elemento de menú desplegable -->
                   <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categorias</a>
@@ -45,32 +45,61 @@
                       </ul>
                   </li>
               </ul>
+              {% if perms.otaku.add_manga %}
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Elementos del menú -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Elemento de menú desplegable -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">SOLO STAFF</a>
+                        <ul class="dropdown-menu">
+                            <!-- Opciones del menú desplegable -->
+                            <li><a class="dropdown-item" href="{% url 'ingresomanga' %}">Ingreso Manga</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'listar_mangas' %}">Listado</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Mahou Shoujo</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Shojo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+               </div>
+                {% endif %}
               <!-- Formulario de búsqueda -->
-              <form class="d-flex buscar" role="search">
+              <form class="d-flex buscar mx-auto" role="search">
                   <input class="form-control me-2" type="search" placeholder="Encuentra tu manga favorito!" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Buscar</button>
               </form>
-              <!-- Enlaces adicionales en la barra de navegación -->
-              <ul class="navbar-nav me-2">
-                  <li class="nav-item">
-                      <!-- Botón de registro -->
-                      <div>
-                          <a href="{% url 'registro' %}">
-                              <button type="submit" class="btn btn-info" id="registrate">Registrate</button>
-                          </a>
-                      </div>
-                  </li>
-              </ul>
-              <!-- Menú desplegable para el usuario (Cliente) -->
-              <ul class="navbar-nav me-2">
+              <ul class="navbar-nav  mb-lg-0">
                 <li class="nav-item">
+                    {% if request.user.is_authenticated %}
+                        <button type="" class="btn">Bienvenido!: {{user.first_name}}</button>
+                    {% else %}
+                        <a href="{% url 'login' %}">
+                            <button type="submit" class="btn btn-warning" id="registrate">Iniciar sesión</button>
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-2">
+                <li class="nav-item">
+                  {% if request.user.is_authenticated %}
+                  <div>
+                      <form action="{% url 'logout' %}" method="post">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-warning">Cerrar sesión</button>
+                      </form>
+                  </div>
+                  {% else %}
                     <!-- Botón de registro -->
                     <div>
-                        <a href="{% url 'login' %}">
-                            <button type="submit" class="btn btn-warning" id="registrate">Iniciar sesion</button>
+                        <a href="{% url 'register' %}">
+                            <button type="submit" class="btn btn-info" id="registrate">Registrate</button>
                         </a>
                     </div>
                 </li>
+                {% endif %}
             </ul>
           </div>
       </div>
