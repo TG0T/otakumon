@@ -145,7 +145,7 @@ def carrito_detalle(request):
         return render(request, 'otaku/carrito_detalle.html', {'items_carrito': items_carrito, 'total_carrito': total_carrito})
     else:
         return render(request, 'otaku/carrito_detalle.html', {'items_carrito': [], 'total_carrito': 0})
-    
+
 @login_required
 def eliminar_del_carrito(request, item_id):
     item_carrito = ItemCarrito.objects.get(id=item_id)
@@ -167,18 +167,23 @@ def boleta(request):
     carrito = Carrito.objects.get(usuario=request.user)
     items_carrito = ItemCarrito.objects.filter(carrito=carrito)
     total_carrito = sum(item.cantidad * item.manga.precio for item in items_carrito)
+    username = request.user.username
+    email = request.user.email
 
     boleta = Boleta.objects.create(
         usuario=request.user,
         total_carrito=total_carrito,
     )
-    #realiza el return
+
+    # realiza el return
     try:
         return render(request, 'otaku/boleta.html', {
             'items_carrito': items_carrito,
             'total_carrito': total_carrito,
             'fecha_compra': datetime.date.today(),
             'numero_boleta': boleta.numero_boleta,
+            'usuario' : username,
+            'email' : email
         })
     finally: #limpia el carrito
         items_carrito.delete()
