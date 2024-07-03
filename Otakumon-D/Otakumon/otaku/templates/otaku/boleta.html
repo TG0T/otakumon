@@ -1,0 +1,26 @@
+{% extends 'otaku/base.html' %}
+{% load format_filters %}
+
+{% block content %}
+  <div style="background-color: white; width: 22%; border-color: black 1px;" >
+    <p style="font-family: 'Courier New', Courier, monospace;">OTAKUMON SPA</p>
+    <p style="font-family: 'Courier New', Courier, monospace;margin-top: -2%;">RUT: 69.420.133-7</p>
+    <p style="font-family: 'Courier New', Courier, monospace;margin-top: -2%;">BOLETA ELECTRONICA No.{{ numero_boleta }}</p>
+    <p style="font-family: 'Courier New', Courier, monospace;margin-top: -2%;">FECHA EMISION: {{ fecha_compra }}</p>
+    <p style="font-family: 'Courier New', Courier, monospace; margin-top: -5%;">------------------------------------------</p>
+    <p style="font-family: 'Courier New', Courier, monospace;margin-top: -5%;">CANTIDAD&nbsp;&nbsp;&nbsp;DESCRIPCION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VALOR</p>
+    <p style="font-family: 'Courier New', Courier, monospace; margin-top: -5%;margin-bottom: -2%;">------------------------------------------</p>
+    {% for item in items_carrito %}
+    <div class="row" style="font-family: 'Courier New', Courier, monospace;margin-top: -1%; display: grid; grid-template-columns: 6.5em 2fr 1fr; justify-items: start;">
+        <div class="grid-item ms-4">{{ item.cantidad }}</div>
+        <div class="grid-item">{{ item.manga.nombre }}</div>
+        <div class="grid-item">${{ item.subtotal|formatonumero }}</div>
+    </div>
+    {% endfor %}
+    <p style="font-family: 'Courier New', Courier, monospace; margin-top: -2%;">------------------------------------------</p>
+    <p style="font-family: 'Courier New', Courier, monospace; margin-top: -5%; display: flex; justify-content: space-between;">
+        <span>TOTAL</span>
+        <span class="me-4">${{ total_carrito|formatonumero }}</span>
+      </p>
+  </div>
+{% endblock %}

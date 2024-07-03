@@ -1,4 +1,5 @@
 {% extends 'otaku/base.html' %}
+{% load format_filters %}
 {% load static %}
 {% block content %}
 
@@ -12,10 +13,13 @@
             <p>Autor: {{detalle.autor}}</p>
             <p>{{detalle.descripcion}}</p>
             <br>
-            <p class="precio">Precio ${{detalle.precio}}</p>
+            <p class="precio">Precio ${{detalle.precio|formatonumero }}</p>
             <br>
-            <button type="button" class="btn btn-success alinear">Agregar al carrito!</button>
-            <button type="button" class="btn btn-warning alinear" style="margin-left: 5%;">Agregar a Favoritos!</button>
+            <form action="{% url 'agregar_al_carrito' detalle.id %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="manga_id" value="{{ detalle.id }}">
+                <button type="submit" class="btn btn-success alinear">Agregar al carrito!</button>
+            </form>
         </div>
     </div>
             
