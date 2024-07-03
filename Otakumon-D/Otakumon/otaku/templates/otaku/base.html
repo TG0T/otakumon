@@ -37,6 +37,10 @@
                             <li><a class="dropdown-item" href="{% url 'ingresomanga' %}">Ingreso Manga</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'listar_mangas' %}">Listado</a></li>
+                            {% if perms.otaku.admin %}
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'admin:index' %}">Panel Administracion</a></li>
+                            {% endif %}
                         </ul>
                     </li>
                 </ul>

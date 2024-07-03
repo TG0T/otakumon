@@ -23,4 +23,5 @@ urlpatterns = [
     path('',include("otaku.urls")),
     path('accounts/', include('django.contrib.auth.urls')),
     path("unicorn/", include("django_unicorn.urls")),
+    path('admin/', admin.site.urls),
 ]
